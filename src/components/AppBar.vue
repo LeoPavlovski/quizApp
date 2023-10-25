@@ -1,7 +1,6 @@
 <template>
   <v-card
-      class="mx-auto overflow-hidden"
-      height="100vh"
+      class="mx-auto"
   >
     <v-app-bar
         color="red"
@@ -12,7 +11,7 @@
       <v-toolbar-title>Quiz</v-toolbar-title>
     <v-chip-group class="d-flex ml-auto">
       <v-chip outlined>Home</v-chip>
-      <v-chip outlined>Take Quiz!</v-chip>
+      <v-chip outlined @click="toQuiz">Take Quiz!</v-chip>
     </v-chip-group>
     </v-app-bar>
 
@@ -20,6 +19,7 @@
         v-model="drawer"
         absolute
         temporary
+        height="100vh"
     >
       <v-list
           nav
@@ -47,12 +47,17 @@
     </v-navigation-drawer>
   </v-card>
 </template>
-
 <script>
 export default {
   data: () => ({
     drawer: false,
     group: null,
   }),
+
+  methods: {
+    toQuiz() {
+      this.$router.push({ name: 'Quiz' });
+    },
+  },
 }
 </script>
