@@ -10,7 +10,7 @@
 
       <v-toolbar-title>Quiz</v-toolbar-title>
     <v-chip-group class="d-flex ml-auto">
-      <v-chip outlined>Home</v-chip>
+      <v-chip outlined @click="toHome">Home</v-chip>
       <v-chip outlined @click="toQuiz">Take Quiz!</v-chip>
     </v-chip-group>
     </v-app-bar>
@@ -33,14 +33,14 @@
             <v-list-item-icon>
               <v-icon>mdi-home</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Home</v-list-item-title>
+            <v-list-item-title @click="toHome">Home</v-list-item-title>
           </v-list-item>
 
           <v-list-item>
             <v-list-item-icon>
               <v-icon>mdi mdi-comment-question-outline</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Take Quiz!</v-list-item-title>
+            <v-list-item-title @click="toQuiz">Take Quiz!</v-list-item-title>
           </v-list-item>
         </v-list-item-group>
       </v-list>
@@ -56,8 +56,16 @@ export default {
 
   methods: {
     toQuiz() {
-      this.$router.push({ name: 'Quiz' });
+      if(this.$route.name !=='Quiz'){
+        this.$router.push({ name: 'Quiz' });
+      }
     },
+    toHome(){
+      if(this.$route.name !=='HomeComponent'){
+        this.$router.push({name:'HomeComponent'})
+      }
+
+    }
   },
 }
 </script>
