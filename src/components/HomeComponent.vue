@@ -39,7 +39,22 @@
         </v-card>
       </v-col>
     </v-row>
+<!--    this is where i am going to display the footer.-->
   </div>
+  <v-footer>
+<!--    I want to display contact, and social media that i have-->
+<!--    TODO actually implement the working links.-->
+    <v-row style="display:flex; align-items:center;justify-content: space-around;margin-top:10px; flex-wrap: wrap;">
+      <div>
+        <p>All rights reserved. &copy; Leo Pavlovski</p>
+      </div>
+
+        <p style="text-transform:capitalize; cursor:pointer;"><v-icon color="blue">mdi mdi-twitter</v-icon> twitter</p>
+      <p style="text-transform:capitalize;cursor:pointer;"><v-icon color="blue">mdi mdi-facebook</v-icon> facebook</p>
+      <p style="text-transform:capitalize; cursor:pointer;"><v-icon color="red">mdi mdi-instagram</v-icon> instagram</p>
+      <p style="text-transform:capitalize; cursor:pointer;"><v-icon color="blue">mdi mdi-linkedin</v-icon> linkedin</p>
+    </v-row>
+  </v-footer>
 </div>
 </template>
 <script>

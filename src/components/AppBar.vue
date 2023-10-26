@@ -7,11 +7,11 @@
         dark
     >
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
-
-      <v-toolbar-title>Quiz</v-toolbar-title>
+      <v-toolbar-title class="text-decoration-underline">Quiz</v-toolbar-title>
     <v-chip-group class="d-flex ml-auto">
       <v-chip outlined @click="toHome">Home</v-chip>
       <v-chip outlined @click="toQuiz">Take Quiz!</v-chip>
+      <v-chip style="color:white !important;">{{this.dayOfWeek}} {{this.formattedTime}}</v-chip>
     </v-chip-group>
     </v-app-bar>
 
@@ -51,9 +51,27 @@
 export default {
   data: () => ({
     drawer: false,
+    currentDate: new Date(),
     group: null,
   }),
-
+  computed: {
+    dayOfWeek() {
+      const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+      return daysOfWeek[this.currentDate.getDay()];
+    },
+    formattedTime() {
+      const hours = this.currentDate.getHours().toString().padStart(2, '0');
+      const minutes = this.currentDate.getMinutes().toString().padStart(2, '0');
+      const seconds = this.currentDate.getSeconds().toString().padStart(2, '0');
+      return `${hours}:${minutes}:${seconds}`;
+    },
+  },
+  created() {
+    // Update the currentDate every second
+    setInterval(() => {
+      this.currentDate = new Date();
+    }, 1000);
+  },
   methods: {
     toQuiz() {
       if(this.$route.name !=='Quiz'){
